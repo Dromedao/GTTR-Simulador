@@ -22,7 +22,7 @@ Sigue estos pasos para ejecutar el simulador en tu máquina local.
 #### 1. Clonar el Repositorio (o descargar el ZIP)
 
 ```bash
-git clone [URL-DEL-REPOSITORIO]
+git clone https://github.com/Dromedao/GTTR-Simulador.git 
 cd [NOMBRE-DE-LA-CARPETA-DEL-PROYECTO]
 ```
 
