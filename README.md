@@ -23,7 +23,7 @@ Sigue estos pasos para ejecutar el simulador en tu máquina local.
 
 ```bash
 git clone https://github.com/Dromedao/GTTR-Simulador.git 
-cd [NOMBRE-DE-LA-CARPETA-DEL-PROYECTO]
+cd GTTR-Simulador
 ```
 
 #### 2. Abrir el Proyecto en Godot
