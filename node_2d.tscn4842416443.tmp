@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://bny5dptobgy18"]
+
+[ext_resource type="Script" uid="uid://balxj62bs1xb1" path="res://mundo.gd" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://dt2prycu5mv0r" path="res://133262.png" id="1_wtcfe"]
+[ext_resource type="Script" uid="uid://dfvn0e7ovdjnv" path="res://SpawnSensor.gd" id="3_epypp"]
+
+[sub_resource type="Curve2D" id="Curve2D_0e48y"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 207, -4, 0, 0, 0, 0, -253, -6)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_epypp"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 207, 12, 0, 0, 0, 0, -255, 11)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_0hol4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 33, 133, 0, 0, 0, 0, 30, -160)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_q6r6c"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 16, 139, 0, 0, 0, 0, 14, -163)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_kdubu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 141, 0, 0, 0, 0, -1, -159)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_d21ai"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -17, 146, 0, 0, 0, 0, -16, -146)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-3, 3)
+script = ExtResource("1_0e48y")
+min_spawn_time = null
+max_spawn_time = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(209, 157)
+texture = ExtResource("1_wtcfe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-167, -933)
+zoom = Vector2(3, 3)
+
+[node name="TimerSpawnAutoNorte" type="Timer" parent="."]
+autostart = true
+
+[node name="TimerSpawnAutoEste" type="Timer" parent="."]
+
+[node name="Semaforo_Norte" type="Area2D" parent="."]
+position = Vector2(-138, -922)
+
+[node name="Semaforo_Este" type="Area2D" parent="."]
+position = Vector2(-122, -942)
+
+[node name="Ruta_Este_a_Oeste" type="Path2D" parent="."]
+position = Vector2(-167, -933)
+curve = SubResource("Curve2D_0e48y")
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(-167, -933)
+curve = SubResource("Curve2D_epypp")
+
+[node name="Ruta_Norte_a_Sur" type="Path2D" parent="."]
+position = Vector2(-167, -933)
+curve = SubResource("Curve2D_0hol4")
+
+[node name="Path2D4" type="Path2D" parent="."]
+position = Vector2(-167, -933)
+curve = SubResource("Curve2D_q6r6c")
+
+[node name="Path2D5" type="Path2D" parent="."]
+position = Vector2(-167, -933)
+curve = SubResource("Curve2D_kdubu")
+
+[node name="Path2D6" type="Path2D" parent="."]
+position = Vector2(-167, -933)
+curve = SubResource("Curve2D_d21ai")
+
+[node name="SpawnSensor_Norte" type="Area2D" parent="."]
+position = Vector2(-134, -807)
+script = ExtResource("3_epypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnSensor_Norte"]
+shape = SubResource("RectangleShape2D_0hol4")
+
+[connection signal="timeout" from="TimerSpawnAutoNorte" to="." method="_on_timer_spawn_auto_norte_timeout"]

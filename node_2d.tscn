@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://bny5dptobgy18"]
+
+[ext_resource type="Script" uid="uid://balxj62bs1xb1" path="res://mundo.gd" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://dt2prycu5mv0r" path="res://133262.png" id="1_wtcfe"]
+[ext_resource type="Script" uid="uid://dfvn0e7ovdjnv" path="res://SpawnSensor.gd" id="3_epypp"]
+[ext_resource type="Script" uid="uid://lckysto3cooy" path="res://Semaforo.gd" id="4_0hol4"]
+
+[sub_resource type="Curve2D" id="Curve2D_0e48y"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 207, -4, 0, 0, 0, 0, -253, -6)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_0hol4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 33, 133, 0, 0, 0, 0, 34.133026, 123.634186, 0, 0, 0, 0, 33, 111, 0, 0, 0, 0, 30, -160)
+}
+point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+size = Vector2(20, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
+size = Vector2(38, 20)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-8, 6)
+script = ExtResource("1_0e48y")
+metadata/_edit_vertical_guides_ = [-348.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(15, 157)
+texture = ExtResource("1_wtcfe")
+
+[node name="TimerSpawnAutoNorte" type="Timer" parent="."]
+autostart = true
+
+[node name="TimerSpawnAutoEste" type="Timer" parent="."]
+autostart = true
+
+[node name="Ruta_Este_a_Oeste" type="Path2D" parent="."]
+position = Vector2(-167, -927)
+curve = SubResource("Curve2D_0e48y")
+
+[node name="Ruta_Norte_a_Sur" type="Path2D" parent="."]
+position = Vector2(-177, -932)
+curve = SubResource("Curve2D_0hol4")
+
+[node name="SpawnSensor_Norte" type="Area2D" parent="."]
+position = Vector2(-134, -757)
+script = ExtResource("3_epypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnSensor_Norte"]
+position = Vector2(-10, -16)
+shape = SubResource("RectangleShape2D_0hol4")
+
+[node name="Semaforo_Norte" type="Area2D" parent="."]
+position = Vector2(-136, -916)
+script = ExtResource("4_0hol4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Semaforo_Norte"]
+position = Vector2(-11, 11)
+shape = SubResource("RectangleShape2D_q6r6c")
+
+[node name="TimerSemaforo" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="SpawnSensor_Este" type="Area2D" parent="."]
+position = Vector2(59, -927)
+rotation = -1.5727134
+script = ExtResource("3_epypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnSensor_Este"]
+position = Vector2(4, -4)
+shape = SubResource("RectangleShape2D_0hol4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-167, -933)
+zoom = Vector2(3, 3)
+
+[node name="Semaforo_Este" type="Area2D" parent="."]
+position = Vector2(-101.99999, -923.99994)
+rotation = 1.5682889
+script = ExtResource("4_0hol4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Semaforo_Este"]
+position = Vector2(-11, 11)
+shape = SubResource("RectangleShape2D_q6r6c")
+
+[node name="TimerCambioDeModo" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="timeout" from="TimerSpawnAutoNorte" to="." method="_on_timer_spawn_auto_norte_timeout"]
+[connection signal="timeout" from="TimerSpawnAutoEste" to="." method="_on_timer_spawn_auto_este_timeout"]
+[connection signal="area_entered" from="SpawnSensor_Norte" to="SpawnSensor_Norte" method="_on_area_entered"]
+[connection signal="area_exited" from="SpawnSensor_Norte" to="SpawnSensor_Norte" method="_on_area_exited"]
+[connection signal="area_entered" from="Semaforo_Norte" to="Semaforo_Norte" method="_on_area_entered"]
+[connection signal="area_exited" from="Semaforo_Norte" to="Semaforo_Norte" method="_on_area_exited"]
+[connection signal="timeout" from="TimerSemaforo" to="." method="_on_timer_semaforo_timeout"]
+[connection signal="area_entered" from="SpawnSensor_Este" to="SpawnSensor_Este" method="_on_area_entered"]
+[connection signal="area_exited" from="SpawnSensor_Este" to="SpawnSensor_Este" method="_on_area_exited"]
+[connection signal="area_entered" from="Semaforo_Este" to="Semaforo_Este" method="_on_area_entered"]
+[connection signal="area_exited" from="Semaforo_Este" to="Semaforo_Este" method="_on_area_exited"]
+[connection signal="timeout" from="TimerCambioDeModo" to="." method="_on_timer_cambio_de_modo_timeout"]
