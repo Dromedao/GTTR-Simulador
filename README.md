@@ -1,4 +1,4 @@
-# 🚦 Simulador de Semáforo Inteligente
+# 🚦Simulador de Gestión de Tráfico en Tiempo Real
 
 Simulador de tráfico vehicular desarrollado en **Godot Engine** que compara dos estrategias de control de semáforos: un sistema de tiempo fijo tradicional y un sistema inteligente basado en sensores.
 
