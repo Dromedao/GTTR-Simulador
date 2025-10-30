@@ -9,6 +9,37 @@ Este proyecto simula una intersección de dos calles (Norte-Sur y Este-Oeste) co
 1. **Modo Semáforo Fijo (Tradicional)**: Cambios de luz basados en tiempos predeterminados
 2. **Modo Sensores Inteligentes**: Cambios dinámicos basados en detección de vehículos en tiempo real
 
+## Instrucciones de Ejecución
+
+Sigue estos pasos para ejecutar el simulador en tu máquina local.
+
+### Prerrequisitos
+- Tener **Godot Engine** (versión 4.0 o superior) instalado.  
+  Puedes descargarlo desde el [sitio web oficial de Godot](https://godotengine.org/).
+
+### Pasos
+
+#### 1. Clonar el Repositorio (o descargar el ZIP)
+
+```bash
+git clone [URL-DEL-REPOSITORIO]
+cd [NOMBRE-DE-LA-CARPETA-DEL-PROYECTO]
+```
+
+#### 2. Abrir el Proyecto en Godot
+
+Abre la aplicación Godot Engine.
+
+En el Administrador de Proyectos, selecciona "Importar" (o "Import").
+
+Navega hasta la carpeta del proyecto que clonaste/descomprimiste.
+
+
+#### 3. Ejecutar la Simulación
+Una vez abierto el proyecto en el editor, presiona el botón "Ejecutar" (ícono ▶️ en la esquina superior derecha) o la tecla F5.
+
+La simulación comenzará en una nueva ventana.
+
 ## Funcionamiento
 
 ### Inicio de la Simulación
